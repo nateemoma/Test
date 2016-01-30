@@ -1,0 +1,81 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Add New Product</h3>
+</div>
+
+<div class="modal-body">
+
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Product Id</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" ng-disabled="actionMode != 'addNew'" ng-model="product.ProductId" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Product Name</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" ng-model="product.ProductName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Price</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" ng-model="product.Price" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Info</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" ng-model="product.Info" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Image</label>
+            <div class="col-lg-7">
+                <input type="file" ng-model="product.Image" accept="image/*" app-filereader />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Status</label>
+            <div class="col-lg-7">
+                <select class="form-control" ng-model="product.Status">
+                    <option value="1" ng-selected="product.Status == 1">1</option>
+                    <option value="0" ng-selected="product.Status == 0">0</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Live</label>
+            <div class="col-lg-7">
+                <select class="form-control" ng-model="product.Live">
+                    <option value="true" ng-selected="product.Live">True</option>
+                    <option value="false" ng-selected="!product.Live">False</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-3 text-right">Visible</label>
+            <div class="col-lg-7">
+                <select class="form-control" ng-model="product.Visible">
+                    <option value="true" ng-selected="product.Visible">True</option>
+                    <option value="false" ng-selected="!product.Visible">False</option>
+                </select>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok(product)">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

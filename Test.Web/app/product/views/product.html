@@ -1,0 +1,52 @@
+﻿<div class="row" style="margin-top: 50px;">
+    <div class="col-lg-12">
+        <button class="btn btn-success" ng-click="ctrl.addNewProduct()">
+            Add New Product
+        </button>
+    </div>
+</div>
+
+<div class="row" ng-init="ctrl.getProducts()">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ProductId</th>
+                    <th>ProductName</th>
+                    <th>Price</th>
+                    <th>Info</th>
+                    <th>Image</th>
+                    <th>Status</th>
+                    <th>Live</th>
+                    <th>Visible</th>
+                    <th>Modified</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="item in ctrl.products">
+                    <td>{{item.ProductId}}</td>
+                    <td>{{item.ProductName}}</td>
+                    <td>{{item.Price}}</td>
+                    <td>{{item.Info}}</td>
+                    <td>
+                        <img  ng-src="{{item.Image != null ? 'data:image/(png|jpeg);base64,' + item.Image : 'Images/no-pic.png'}}" height="60" />
+                    </td>
+                    <td>{{item.Status}}</td>
+                    <td>{{item.Live}}</td>
+                    <td>{{item.Visible}}</td>
+                    <td>{{item.Modified}}</td>
+                    <td>
+                        <button class="input-sm btn btn-info" ng-click="ctrl.updateProduct(item)">
+                            Edit
+                        </button>
+                        <button class="input-sm btn btn-danger" ng-click="ctrl.deleteProduct(item)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
