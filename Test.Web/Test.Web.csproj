@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\product\views\confirm-delete.html" />
     <Content Include="Images\no-pic.png" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />

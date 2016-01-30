@@ -86,13 +86,35 @@
         };
 
         this.deleteProduct = function (product) {
-            productServices.DeleteProduct(product)
-            .success(function (data) {
-                console.log(data)
+            $uibModal.open({
+                templateUrl: 'app/product/views/confirm-delete.html',
+                size: 'md',
+                backdrop: 'static',
+                controller: function ($scope, $uibModalInstance) {
+
+                    $scope.product = product;
+
+                    $scope.ok = function (product) {
+                        $uibModalInstance.close(product)
+                    };
+
+                    $scope.cancel = function () {
+                        $uibModalInstance.dismiss()
+                    };
+                }
             })
-            .error(function (error, status) {
-                console.log('DeleteProduct\error: ' + error + '\status: ' + status)
+            .result.then(function (product) {
+                productServices.DeleteProduct(product)
+                .success(function (data) {
+                    console.log(data)
+                    vm.getProducts();
+                    toaster.pop("success", 'Delete Product', 'success');
+                })
+                .error(function (error, status) {
+                    console.log('DeleteProduct\error: ' + error + '\status: ' + status)
+                });
             });
+            
         };
     })
     .directive('appFilereader', function ($q) {
